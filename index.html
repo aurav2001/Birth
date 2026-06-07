@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday GP!</title>
+  <!-- Google Fonts for premium look -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Outfit:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,600;0,800;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Starry Background Canvas -->
+  <canvas id="starfield"></canvas>
+
+  <!-- Main Glassmorphic Container -->
+  <main class="app-container">
+    
+    <!-- LOBBY SCREEN (Start Screen) -->
+    <div id="screen-lobby" class="screen active">
+      <div class="card glass">
+        <h1 class="title-primary">GP's Special Day</h1>
+        <p class="subtitle">Prepare for the celebration of the year.</p>
+        <button id="btn-start" class="btn btn-glow">
+          <span class="btn-text">Start Countdown</span>
+          <span class="btn-effect"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- COUNTDOWN SCREEN -->
+    <div id="screen-countdown" class="screen">
+      <div class="card glass">
+        <h2 class="title-secondary">Counting down to June 8th...</h2>
+        <div class="countdown-timer">
+          <div class="timer-box">
+            <span id="timer-hours" class="timer-num">00</span>
+            <span class="timer-label">Hours</span>
+          </div>
+          <div class="timer-separator">:</div>
+          <div class="timer-box">
+            <span id="timer-mins" class="timer-num">00</span>
+            <span class="timer-label">Minutes</span>
+          </div>
+          <div class="timer-separator">:</div>
+          <div class="timer-box">
+            <span id="timer-secs" class="timer-num">00</span>
+            <span class="timer-label">Seconds</span>
+          </div>
+        </div>
+        <p class="timer-caption">Every second brings us closer to a magical moment.</p>
+      </div>
+    </div>
+
+    <!-- CELEBRATION SCREEN -->
+    <div id="screen-celebration" class="screen">
+      <div class="celebration-content">
+        
+        <!-- Diya (Deep) Container -->
+        <div class="diya-wrapper">
+          <!-- Glow effect behind Diya -->
+          <div class="diya-aura"></div>
+          
+          <svg class="diya-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <!-- Diya Body Gradient -->
+              <linearGradient id="diyaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#8a4f1d" />
+                <stop offset="30%" stop-color="#6e3910" />
+                <stop offset="70%" stop-color="#4d2407" />
+                <stop offset="100%" stop-color="#2b1100" />
+              </linearGradient>
+              <!-- Gold Trim Gradient -->
+              <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#bf953f" />
+                <stop offset="25%" stop-color="#fcf6ba" />
+                <stop offset="50%" stop-color="#b38728" />
+                <stop offset="75%" stop-color="#fbf5b7" />
+                <stop offset="100%" stop-color="#aa771c" />
+              </linearGradient>
+              <!-- Inner Flame Gradient -->
+              <linearGradient id="innerFlame" x1="0%" y1="100%" x2="0%" y2="0%">
+                <stop offset="0%" stop-color="#ffffff" stop-opacity="1" />
+                <stop offset="40%" stop-color="#fff4b8" stop-opacity="1" />
+                <stop offset="100%" stop-color="#ffb732" stop-opacity="0" />
+              </linearGradient>
+              <!-- Middle Flame Gradient -->
+              <linearGradient id="midFlame" x1="0%" y1="100%" x2="0%" y2="0%">
+                <stop offset="0%" stop-color="#ffb732" />
+                <stop offset="70%" stop-color="#ff6c00" />
+                <stop offset="100%" stop-color="#ff3c00" stop-opacity="0" />
+              </linearGradient>
+              <!-- Outer Flame/Aura Gradient -->
+              <radialGradient id="flameAura" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#ff8c00" stop-opacity="0.8" />
+                <stop offset="50%" stop-color="#ff3c00" stop-opacity="0.3" />
+                <stop offset="100%" stop-color="#ff0000" stop-opacity="0" />
+              </radialGradient>
+            </defs>
+            
+            <!-- Diya Stand / Shadow -->
+            <ellipse cx="100" cy="165" rx="55" ry="12" fill="#000" opacity="0.4" filter="blur(6px)" />
+            
+            <!-- The Wick (Batti) -->
+            <path d="M100 135 C96 115, 96 100, 100 90 C101 100, 101 115, 100 135 Z" fill="#2d1f18" />
+            <path d="M100 95 C98 90, 98 85, 100 80 C101 85, 101 90, 100 95 Z" fill="#ff7a00" opacity="0.8" filter="blur(1px)" />
+
+            <!-- The Diya Clay Base (Bowl Shape) -->
+            <!-- Back lip of diya -->
+            <ellipse cx="100" cy="130" rx="60" ry="18" fill="#4d2407" />
+            <ellipse cx="100" cy="130" rx="56" ry="15" fill="#2b1100" />
+            
+            <!-- Main Bowl Body -->
+            <path d="M40 130 C40 170, 160 170, 160 130 C160 135, 150 160, 100 160 C50 160, 40 135, 40 130 Z" fill="url(#diyaGrad)" />
+            
+            <!-- Front rim highlight/bevel -->
+            <path d="M40 130 C60 145, 140 145, 160 130 C140 140, 60 140, 40 130 Z" fill="#aa771c" opacity="0.6" />
+            
+            <!-- Decorative Gold Pattern on Bowl -->
+            <path d="M50 138 Q100 155 150 138 Q100 162 50 138 Z" fill="url(#goldGrad)" opacity="0.8" />
+            <circle cx="100" cy="148" r="4" fill="#fff" opacity="0.9" filter="drop-shadow(0 0 2px #fff)" />
+            <circle cx="80" cy="144" r="3" fill="#fff" opacity="0.7" />
+            <circle cx="120" cy="144" r="3" fill="#fff" opacity="0.7" />
+            
+            <!-- Flame Group (Flickering is applied here via CSS) -->
+            <g class="diya-flame-group">
+              <!-- Outer soft aura -->
+              <circle cx="100" cy="70" r="35" fill="url(#flameAura)" filter="blur(4px)" />
+              
+              <!-- Main Outer Flame -->
+              <path class="flame-outer" d="M100 100 C75 100, 75 70, 100 35 C125 70, 125 100, 100 100 Z" fill="url(#midFlame)" filter="blur(1px)" />
+              
+              <!-- Inner Hot Flame Core -->
+              <path class="flame-inner" d="M100 100 C88 100, 88 80, 100 50 C112 80, 112 100, 100 100 Z" fill="url(#innerFlame)" />
+            </g>
+          </svg>
+        </div>
+
+        <!-- Animated Age Number Counter (24 -> 25) -->
+        <div class="age-container">
+          <div class="age-label">Turning</div>
+          <div class="age-roller-viewport">
+            <div id="age-roller-wrapper" class="age-roller-wrapper">
+              <div class="age-digit">24</div>
+              <div class="age-digit">25</div>
+            </div>
+          </div>
+          <div class="wishes-text">Happy Birthday!</div>
+        </div>
+
+        <!-- GP Signature at the bottom -->
+        <div class="gp-signature">
+          <div class="gp-decor-line"></div>
+          <h3 class="gp-text">GP</h3>
+          <div class="gp-decor-line"></div>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- TEST/DEV TOOLBAR (Floating action button) -->
+  <div class="dev-controls" title="Test Birthday Celebration Animation">
+    <button id="btn-test-celebrate" class="btn-circle">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/>
+      </svg>
+    </button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
